@@ -1,0 +1,26 @@
+1. Con respecto al protocolo de #estaHerido y #noEstaHerido pensamos que dificulta la legibilidad. 
+   Más bien en vez de encontrar claridad, resulta en un agregado de mensaje innecesario (creemos que pudiera contradecir
+   la heurística de conjunto de mensajes minimal). Básicamente, termina haciendo al código menos claro e intuitivo.
+
+2. Opinamos que el hecho de que para algunas funcionalidades haya 3 tests para el mismo comportamiento pero aplicando a cada
+   uno de los combatientes indica que debería considerarse la posibilidad de una existencia de relación de parentezco entre
+   ellos, ya que justamente poseen el mismo comportamiento en un protocolo. Esto nos permitiría testear una sola vez cada
+   funcionalidad.
+
+3. Para el resultado de haber desarrollado un combate, decidimos modelarlo mediante la creación de un objeto 
+   "ResultadoDeUnCombate". Decidimos ponerle este nombre para cumplir con la heurística de diseño de nombrar los objetos
+   según el rol que cumplen/el ente que representan en el dominio del problema. 
+		
+   Con respecto al modelado de ResultadoDeUnCombate, tomamos en cuenta la información brindada en el enunciado (tanto el texto de la consigna como los tests)
+   para entender el rol que cumple dentro del dominio del problema, y qué protocolo debería saber responder (lo relacionado con el bando ganador, o en su
+   defecto, ganador "indeterminado", y la cantidad de rondas que duró el combate).
+
+   En cuanto a las opciones consideradas para modelar el resultado, de hecho, habíamos comenzado con un string pero nos dimos
+   cuenta que tener el objeto podría ser una mejor opción para representar el ente que existía en el dominio del problema (cumplía con la heurística
+   de la relación 1:1 entre objeto y ente de la realidad) y a su vez disminuía la complejidad al momento de realizar los asserts, ya que se
+   devolvía un resultado que debía contener el ganador y la cantidad de rondas, lo cual con un string no era tan fácil de manejar (lo mismo
+   aplica para la utilización de símbolos).
+   
+  
+
+

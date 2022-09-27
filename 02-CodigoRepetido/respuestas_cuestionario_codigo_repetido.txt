@@ -1,0 +1,28 @@
+1) En los test 01 y 02 hay código repetido. Cuando lo extrajeron crearon algo nuevo. Eso es algo que estaba en la realidad y no estaba 
+   representado en nuestro código, por eso teníamos código repetido. ¿Cuál es esa entidad de la realidad que crearon?
+
+	Para quitar el código repetido de los tests 01 y 02, empleamos el algoritmo para eliminarlo. Allí, nos dimos cuenta que el ente de
+	la realidad faltante era algo que representara la duración de tiempo. Al investigar los mensajes de la clase TestCase, vimos
+	que podíamos utilizar el mensaje should: notTakeMoreThan:, el cual en su segundo parámetro debía recibir la clase Duration ya que 
+	en la implementación de este mensaje, se utilizaba otro mensaje llamado: totalMilliseconds. Este mensaje solo sabe ser respondido por
+	la clase Duration. Es ahí, cuando vimos que era posible utilizar un ente de la realidad ya creado en Smalltalk que representara la
+	idea que teníamos en un principio, en este caso, la idea de duración.
+
+2)¿Cuáles son las formas en que podemos representar entes de la realidad en Smalltalk que conocés? Es decir, ¿qué cosas del lenguaje 
+  Smalltalk puedo usar para representar entidades de la realidad?
+
+	En Smalltalk, para representar entes de la realidad tenemos el DenotativeObjectBrowser, que trabaja mediante prototipos, objetos
+	concretos, siguiendo el paradigma moderno (en este caso no existe la idea de modelar ideas/conceptos). En segundo lugar, posee
+	el SystemBrowser, donde se pueden representar entes de la realidad mediante la idea de clases (éstas son objetos que nos permiten
+	modelar ideas y conceptos), en este caso obtenemos objetos concretos/entes específicos mediante la instanciación de una clase 
+	(la misma no puede ser abstracta si queremos instanciar), siguiendo el paradigma clásico.
+
+3)¿Qué relación hay entre sacar código repetido (creando abstracciones) y la teoría del modelo/sistema (del paper de Naur)?
+	
+	La relación entre sacar código repetido y la teoría del modelo/sistema planteado por Naur viene de la mano con el hecho de quien 
+	construye la teoría es quien puede realmente identificar esas abstracciones posibles. Al ponernos a ver el código, analizarlo
+	minuciosamente, pensar en lo que se estaba intentando representar, comenzamos a entender más el dominio del problema y empezamos
+	a ser constructores de la teoría. Solamente ahí fue cuando pudimos comenzar a quitar código repetido, creando nuevas abstracciones,
+	pertinentes al dominio del problema presentado.  
+
+	

@@ -1,0 +1,61 @@
+Aporte de los mensajes de DD
+En un double dispatch (DD), ¿qué información aporta cada uno de los dos llamados?
+
+En un Double Dispatch (DD) cada llamado resuelve la necesidad de chequear la clase a la cual el objeto pertenece, utilizando el 
+polimorfismo como herramienta. Si ejemplificamos:
+
+<Rectangulo> representarseEn: unPuertoDePantalla
+unPuertoDePantalla representarRectangulo: self.
+
+<PuertoDePantalla> representarRectangulo:unRec
+"código"
+
+ El primer llamado nos aporta sobre el receptor, mientras que el segundo llamado lo hace sobre
+el argumento. En el envío del primer mensaje se resuelve una parte nomás, porque el argumento sigue siendo polimórfico. Para reducir
+este polimorfismo restante, es necesario el envío de otro mensaje. La información obtenida en el primer envío es importante que se 
+conserve mediante este nuevo grupo de mensajes.
+
+Lógica de instanciado
+Con lo que vieron y saben hasta ahora, ¿donde les parece mejor tener la lógica de cómo instanciar un objeto? ¿por qué? 
+¿Y si se crea ese objeto desde diferentes lugares y de diferentes formas? ¿cómo lo resuelven?
+
+Nos parece mejor tener la lógica de cómo instanciar un objeto en los mensajes de clase ya que es la propia clase a la que le mandamos
+el mensaje para instanciar un objeto. La lógica debe ir en el método que implementa la creación de instancia justamente porque también 
+es parte de esa creación. Si se crea ese objeto desde diferentes lugares y de diferentes formas una posibilidad para resolverlo
+sería que en esos lugares donde se crea llamar al mensaje de creación de instancia pertenciente a la clase adecuada.  
+
+
+Nombres de las categorías de métodos
+Con lo que vieron y trabajaron hasta ahora, ¿qué criterio están usando para categorizar métodos?
+
+Para categorizar métodos, el criterio que estamos usando es agrupar mensajes según la función que cumplen. Además, categorizamos cuando
+estos mensajes pertencen al ámbito de lo privado. 
+
+Subclass Responsibility
+Si todas las subclases saben responder un mismo mensaje, ¿por qué ponemos ese mensaje sólo con un “self subclassResponsibility” 
+en la superclase? ¿para qué sirve?
+
+En primer lugar, el mensaje que lanza self subclassResponsibility es mucho más descriptivo del error que se está cometiendo en vez del
+"Message Not Understood", que no nos da una idea tan precisa de lo que está ocurriendo. Pero principalmente, la idea del 
+self subclassResponsibility subyace en que el método está definiendo lo que este mensaje hace para toda la jerarquía. Es decir, cualquier
+implementación en la subclase debe hacer lo mismo, sus implementaciones serán diferentes, pero sus própositos serán los mismos. Además,
+es importante para el modelo porque al momento de agregar una nueva clase, nos indica el protocolo que este debería tener e implementar.
+Si no lo tuvieramos, tendríamos que ir de clase en clase viendo qué mensajes deberíamos implementar.
+
+No rompas
+¿Por qué está mal/qué problemas trae romper encapsulamiento?
+
+No debería romperse encapsulamiento para no propagar el efecto del cambio. Cuando se rompe encapsulamiento sube el nivel de acoplamiento
+y baja la cohesión, generando un modelo en el cual los objetos se conocen mucho entre sí. Esto es un problema ya que al momento de hacer 
+cambios (mensajes/objetos) va a haber que modificar a los demás objetos (implementaciones de los mensajes). A su vez, esto va en contra
+de como está pensado Smalltalk (objetos que colaboran entre sí mediante el envío de mensajes), con lo cual estaría desaprovechando el
+potencial que tiene este paradigma orientado a objetos. En resumen, "Tell Don´t Ask".
+
+
+
+
+
+
+
+
+
